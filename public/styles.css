@@ -1,0 +1,14 @@
+.employee-title {
+    font-size: 1.15rem;
+}
+.badge {
+    align-self: center;
+    width: 50%;
+}
+.card-title {
+    margin-bottom: 25px;
+    text-align: center;
+}
+.text-center{
+    margin-bottom: 2.5rem;
+}
