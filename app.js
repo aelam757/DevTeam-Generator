@@ -102,6 +102,7 @@ function teamMember(){
                       answers.officeNumber
                     );
                   })
+                  Manager();
             }
                 
                 // Engineer Function
@@ -136,6 +137,7 @@ function teamMember(){
                           answers.engineerGithub
                         );
                   })
+                  Engineer();
             }
 
                 // Intern Function
@@ -170,6 +172,7 @@ function teamMember(){
                           answers.internSchool
                         );
                   })
+                  Intern();
             }
 
                 
