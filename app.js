@@ -95,7 +95,12 @@ function teamMember(){
                   }])
 
                   .then (response => {
-
+                    const Manager = new Manager(
+                      answers.managerName,
+                      answers.managerId,
+                      answers.managerEmail,
+                      answers.officeNumber
+                    );
                   })
             }
                 
@@ -124,7 +129,12 @@ function teamMember(){
                       }])
 
                       .then(response => {
-
+                        const Engineer = new Engineer(
+                          answers.engineerName,
+                          answers.engineerId,
+                          answers.engineerEmail,
+                          answers.engineerGithub
+                        );
                   })
             }
 
@@ -153,7 +163,12 @@ function teamMember(){
                       }])
                       
                       .then(response => {
-
+                        const Intern = new Intern(
+                          answers.internName,
+                          answers.internId,
+                          answers.internEmail,
+                          answers.internSchool
+                        );
                   })
             }
 
