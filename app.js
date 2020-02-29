@@ -1,53 +1,34 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
-const Manager = require("./lib/Manager");
+const engineer = require("./lib/Engineer");
+const intern = require("./lib/Intern");
+const manager = require("./lib/Manager");
 
 let teamMembers = {
-    Manager: null,  
-    Engineers: [],
-    Intern: []
+    manager: null,  
+    engineers: [],
+    intern: []
 }
 
 function init(){
-    startHTML();
-    teamMember();
-}
+     // startHTML();
+    //  teamMember();
+
 
 // Team Member Prompts
-function teamMember(){
+  function teamMember(){
     inquirer
-    .prompt([{
+    .prompt([
+      {
         type: "list",
         name: "selectOption",
         message: "What is the role you are adding to the team?",
-        choices: ["Add a manager", "Add an engineer", "Add an intern", "Quit"]
-    },
-    {
-        type: "input",
-        name: "name",
-        message: "Please enter team member's name:"
-    },
-    {
-        type: "list",
-        name: "role",
-        message: "Select title for member:",
-        choices: ["Intern", "Engineer", "Manager"]
-    },
-    {
-        type: "input",
-        name: "email",
-        message: "Please enter the team member's email:"
-    },
-    {
-        type: "input",
-        name: "id",
-        message: "Please enter team member's Id number:"
-    }])
+        choices: ["Add a manager", "Add an engineer", "Add an intern"]
+      }
+  ])
 
     // Response to adding a team member.
-    .then(response => {
+     .then(response => {
         switch (response.selectedOption) {
           case "Add a manager":
             console.log("Adding the manager!");
@@ -68,9 +49,9 @@ function teamMember(){
             break;
         }
     });
-}
+  }
             // Manager Function 
-            function Manager() {
+            function addManager() {
                 console.log("Lets add a manager");
                 inquirer.prompt([
                   {
@@ -92,21 +73,22 @@ function teamMember(){
                     type: "input",
                     name: "officeNumber",
                     message: "What is the manager's office number?"
-                  }])
+                  }
+                ])
 
-                  .then (response => {
-                    const Manager = new Manager(
+                  .then(response => {
+                    let manager = new manager(
                       answers.managerName,
                       answers.managerId,
                       answers.managerEmail,
                       answers.officeNumber
                     );
                   })
-                  Manager();
+                  
             }
                 
                 // Engineer Function
-                function Engineer() {
+                function addEngineer() {
                     console.log("Lets add a engineer!");
                     inquirer.prompt([{
                         type: "input",
@@ -120,30 +102,24 @@ function teamMember(){
                       },
                       {
                         type: "input",
-                        name: "engineerEmail",
-                        message: "What is the manager's email?"
-                      },
-                      {
-                        type: "input",
                         name: "engineerGithub",
                         message: "What is the engineer's Github?"
                       }])
 
                       .then(response => {
-                        const Engineer = new Engineer(
+                        let engineer = new engineer(
                           answers.engineerName,
                           answers.engineerId,
-                          answers.engineerEmail,
                           answers.engineerGithub
                         );
                   })
-                  Engineer();
+                  
             }
 
                 // Intern Function
-                function Intern() {
+                function addIntern() {
                     console.log("Lets add a intern!");
-                    inquirer.prompt([{
+                     inquirer.prompt([{
                         type: "input",
                         name: "internName",
                         message: "What is the intern's name?"
@@ -155,25 +131,19 @@ function teamMember(){
                       },
                       {
                         type: "input",
-                        name: "internEmail",
-                        message: "What is the intern's email?"
-                      },
-                      {
-                        type: "input",
                         name: "internSchool",
                         message: "Where did they go to school?"
                       }])
                       
                       .then(response => {
-                        const Intern = new Intern(
+                        let intern = new intern(
                           answers.internName,
                           answers.internId,
-                          answers.internEmail,
                           answers.internSchool
                         );
                   })
-                  Intern();
+                  
             }
-
-                
+        teamMember();
+ }                
 init();
