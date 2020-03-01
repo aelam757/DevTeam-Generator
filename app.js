@@ -1,42 +1,43 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const engineer = require("./lib/Engineer");
-const intern = require("./lib/Intern");
-const manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
 
-let teamMembers = {
-    manager: null,  
+let members = {
+    boss: null,  
     engineers: [],
     intern: []
 }
 
 function init(){
-     // startHTML();
-    //  teamMember();
+   // startHTML();
+  teamMembers();
 
 
-// Team Member Prompts
-  function teamMember(){
+// Members Prompts
+  function teamMembers(){
     inquirer
     .prompt([
       {
         type: "list",
         name: "selectOption",
         message: "What is the role you are adding to the team?",
-        choices: ["Add a manager", "Add an engineer", "Add an intern"]
+        choices: ["Add a manager", "Add a engineer", "Add a intern"]
       }
   ])
 
     // Response to adding a team member.
      .then(response => {
-        switch (response.selectedOption) {
+        switch (response.selectOption) {
           case "Add a manager":
             console.log("Adding the manager!");
-            if (teamMembers.manager === null) {
+            if (members.manager === null) {
               addManager();
             } else {
               console.log("There can only be one manager at a time!");
-              promptUser();
+              // promptUser();
+              console.log("Prompt working!")
             }
             break;
           case "Add a engineer":
@@ -50,6 +51,7 @@ function init(){
         }
     });
   }
+
             // Manager Function 
             function addManager() {
                 console.log("Lets add a manager");
@@ -77,15 +79,16 @@ function init(){
                 ])
 
                   .then(response => {
-                    let manager = new manager(
+                    const Manager = new Manager(
                       answers.managerName,
                       answers.managerId,
                       answers.managerEmail,
                       answers.officeNumber
-                    );
+                    )
+                    console.log(response);
+                    createTeam();
                   })
-                  
-            }
+            };
                 
                 // Engineer Function
                 function addEngineer() {
@@ -107,14 +110,14 @@ function init(){
                       }])
 
                       .then(response => {
-                        let engineer = new engineer(
+                        const Engineer = new Engineer(
                           answers.engineerName,
                           answers.engineerId,
                           answers.engineerGithub
                         );
+                        console.log(response);
                   })
-                  
-            }
+            };
 
                 // Intern Function
                 function addIntern() {
@@ -136,14 +139,14 @@ function init(){
                       }])
                       
                       .then(response => {
-                        let intern = new intern(
+                        const Intern = new Intern(
                           answers.internName,
                           answers.internId,
                           answers.internSchool
                         );
+                        console.log(response);
                   })
-                  
-            }
-        teamMember();
+            };
+        // teamMembers();
  }                
 init();
