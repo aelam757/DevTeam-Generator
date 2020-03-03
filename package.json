@@ -1,0 +1,29 @@
+{
+  "name": "employee-summary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "inquirer": "^7.0.5",
+    "jest": "^25.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aelam757/DevTeam-Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aelam757/DevTeam-Generator/issues"
+  },
+  "homepage": "https://github.com/aelam757/DevTeam-Generator#readme"
+}
