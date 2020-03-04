@@ -26,9 +26,7 @@ function init(){
         choices: ["Add a manager"]
       }
   ])
-
-     
-     .then(response => {
+      .then(response => {
         switch (response.selectOption) {
           case "Add a manager":
             console.log("Adding the manager!");
@@ -36,7 +34,7 @@ function init(){
               addManager();
             } else {
               console.log("There can only be one manager at a time!");
-            };
+            }; break;
     };
   });
 }
@@ -46,13 +44,13 @@ function init(){
               inquirer.prompt([
                 {
                   type: "input",
-                  name: "selectedOption",
+                  name: "selectOption",
                   message: "Lets create the rest of our team! Who would you like to add?",
                   choices: ["Add a engineer", "Add a intern", "The team is complete."]
                 }
               ])
               .then(response => {
-                switch(response.selectedOption){
+                switch(response.selectOption){
                   case "Add a engineer":
                     console.log("Adding a engineer!");
                     addEngineer();
@@ -100,7 +98,7 @@ function init(){
                       response.officeNumber
                     )
                     console.log(response);
-                    createTeam();
+                    
                   })
             };
                 
